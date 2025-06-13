@@ -1,3 +1,36 @@
+/**
+ * Web-to-Video Recorder - Frame-by-Frame Capture Module
+ * 
+ * @file capture_images.js
+ * @description Captures individual PNG frames from a web page animation using Puppeteer.
+ *              Monitors for animation completion via window.animationFinished flag and 
+ *              provides optimized frame sequences for video conversion.
+ * 
+ * @author Aleem Akhtar
+ * @version 1.0.0
+ * @created 2025
+ * @github https://github.com/AleemAkhtar
+ * 
+ * @features
+ * - Smart animation detection with window.animationFinished monitoring
+ * - High-quality PNG frame capture at adaptive frame rates
+ * - Automatic frame rate calculation and FFmpeg command generation
+ * - Configurable viewport (500x1100) for consistent output
+ * - Maximum 60-second recording duration with minimum 5-second threshold
+ * 
+ * @usage
+ * node capture_images.js
+ * 
+ * @requirements
+ * - Web application running on http://127.0.0.1:3000
+ * - Target page must set window.animationFinished = true when complete
+ * - Element with ID 'chat-container' must exist for initial page load detection
+ * 
+ * @output
+ * - PNG frames saved to ./frames/ directory (frame_0001.png, frame_0002.png, etc.)
+ * - Console output with capture statistics and suggested FFmpeg commands
+ */
+
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const path = require('path');

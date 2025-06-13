@@ -1,3 +1,44 @@
+/**
+ * Web-to-Video Recorder - FFmpeg Integration Module
+ * 
+ * @file ffmpeg_record.js
+ * @description Handles FFmpeg process management for real-time screen and audio recording.
+ *              Provides utilities to start and stop FFmpeg recording sessions with optimized
+ *              settings for web content capture.
+ * 
+ * @author Aleem Akhtar
+ * @version 1.0.0
+ * @created 2025
+ * @github https://github.com/AleemAkhtar
+ * 
+ * @features
+ * - Screen region capture using Windows GDI (gdigrab)
+ * - Audio capture via DirectShow (VB-Audio Virtual Cable)
+ * - H.264 video encoding with AAC audio
+ * - Configurable screen offset and capture dimensions
+ * - Process lifecycle management with graceful shutdown
+ * 
+ * @functions
+ * - startFFmpeg(outputFile): Initiates FFmpeg recording process
+ * - stopFFmpeg(): Gracefully terminates the recording
+ * 
+ * @configuration
+ * - Capture Region: 480x916 pixels at offset (20, 90)
+ * - Video: 30fps, H.264 codec, YUV420p pixel format
+ * - Audio: AAC codec via CABLE Output (VB-Audio Virtual Cable)
+ * 
+ * @requirements
+ * - FFmpeg installed and accessible in system PATH
+ * - Windows OS (uses gdigrab for screen capture)
+ * - VB-Audio Virtual Cable for audio recording
+ * 
+ * @usage
+ * const { startFFmpeg, stopFFmpeg } = require('./ffmpeg_record');
+ * startFFmpeg('output.mp4');
+ * // ... recording happens ...
+ * stopFFmpeg();
+ */
+
 const { spawn } = require('child_process');
 
 let ffmpegProcess = null;

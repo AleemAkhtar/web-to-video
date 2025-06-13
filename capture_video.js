@@ -1,3 +1,37 @@
+/**
+ * Web-to-Video Recorder - Direct Video Capture Module
+ * 
+ * @file capture_video.js
+ * @description Records web page animations directly to MP4 video files using Puppeteer 
+ *              and FFmpeg integration. Provides real-time screen capture with audio support.
+ * 
+ * @author Aleem Akhtar
+ * @version 1.0.0
+ * @created 2025
+ * @github https://github.com/AleemAkhtar
+ * 
+ * @features
+ * - Real-time video recording without intermediate frame files
+ * - Integration with FFmpeg for live screen capture
+ * - Audio recording support via VB-Audio Virtual Cable
+ * - Automatic start/stop based on animation completion detection
+ * - Timestamped output files for organized recordings
+ * 
+ * @usage
+ * node capture_video.js
+ * 
+ * @requirements
+ * - Web application running on http://127.0.0.1:3000
+ * - FFmpeg installed and accessible in system PATH
+ * - Target page must set window.animationFinished = true when complete
+ * - Element with ID 'chat-container' must exist for initial page load detection
+ * - Optional: VB-Audio Virtual Cable for audio recording
+ * 
+ * @output
+ * - MP4 video files with ISO timestamp naming (recording-YYYY-MM-DDTHH-mm-ss-sssZ.mp4)
+ * - Console logs showing recording progress and completion status
+ */
+
 const puppeteer = require('puppeteer');
 const { startFFmpeg, stopFFmpeg } = require('./ffmpeg_record');
 
